@@ -4,6 +4,7 @@ import Data.Char (isDigit, isAlpha, isSpace, isAlphaNum)
 import Tokens
 
 classifyIdent :: String -> Token
+classifyIdent "de"       = TokIf
 classifyIdent "se"       = TokIf
 classifyIdent "sinão"    = TokElse
 classifyIdent "enquanto" = TokWhile
@@ -58,6 +59,8 @@ lexer ('>':'=':cs) = TokGe    : lexer cs
 lexer ('<':'=':cs) = TokLe    : lexer cs
 lexer ('-':'>':cs) = TokArrow : lexer cs
 
+lexer ('[':cs) = TokOpenBra  : lexer cs
+lexer (']':cs) = TokCloseBra : lexer cs
 lexer ('=':cs) = TokAtri     : lexer cs
 lexer ('>':cs) = TokGt       : lexer cs
 lexer ('<':cs) = TokLt       : lexer cs
@@ -65,7 +68,7 @@ lexer ('-':cs) = TokMinus    : lexer cs
 lexer ('+':cs) = TokPlus     : lexer cs
 lexer ('*':cs) = TokMult     : lexer cs
 lexer ('/':cs) = TokDiv      : lexer cs
-lexer (',':cs) = Tokcomma    : lexer cs
+lexer (',':cs) = TokComma    : lexer cs
 lexer ('(':cs) = TokOpenPar  : lexer cs
 lexer (')':cs) = TokClosePar : lexer cs
 

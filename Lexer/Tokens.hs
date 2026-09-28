@@ -30,7 +30,7 @@ data Token
     | TokOption
     | TokUnit
     | TokOpen
-    | Tokcomma 
+    | TokComma 
     | TokReturn
     | TokArrow
     | TokEq
@@ -45,4 +45,7 @@ data Token
     | TokGt
     | TokEOF
     | TokError
+    | TokOf
+    | TokOpenBra
+    | TokCloseBra
     deriving (Show, Eq)
